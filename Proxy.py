@@ -185,8 +185,11 @@ while True:
       # ~~~~ INSERT CODE ~~~~
       try:
           clientSocket.sendall(response_originServer)
+          clientSocket.shutdown(socket.SHUT_WR)  #finished communicating with client - shutdown socket writes
       except socket.error as get_error:
-          print(f"Failed to send response to client: {get_error}") #test
+          print(f"Failed to send response to client: {get_error}")
+      finally:
+          clientSocket.close()  #
       # ~~~~ END CODE INSERT ~~~~
 
       # Create a new file in the cache for the requested file.
