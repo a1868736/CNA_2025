@@ -56,6 +56,7 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
+    clientSocket, client_address = socket_for_sever.accept() #accept connection, returns socket & address
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
