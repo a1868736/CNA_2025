@@ -183,7 +183,10 @@ while True:
 
       # 11.Send the response to the client
       # ~~~~ INSERT CODE ~~~~
-      clientSocket.sendall(response_originServer) #send response back to client
+      try:
+          clientSocket.sendall(response_originServer)
+      except socket.error as get_error:
+          print(f"Failed to send response to client: {get_error}") #test
       # ~~~~ END CODE INSERT ~~~~
 
       # Create a new file in the cache for the requested file.
