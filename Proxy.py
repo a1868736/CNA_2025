@@ -179,6 +179,13 @@ while True:
           if not chunk:
               break
           response_originServer += chunk
+
+      response_data = response_originServer.decode('utf-8', errors='ignore') #decode response
+
+      location_match = re.search(r'Location:\s*(\S+)', response_data, re.IGNORECASE)
+      if location_match:
+          location_url = location_match.group(1)  #extract location URL from response header like 301/302
+          print(f"Redirecting to: {location_url}")
       # ~~~~ END CODE INSERT ~~~~
 
       # 11.Send the response to the client
