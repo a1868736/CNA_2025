@@ -173,7 +173,12 @@ while True:
 
       # 10.Get the response from the origin server
       # ~~~~ INSERT CODE ~~~~
-      response_originServer = originServerSocket.recv(BUFFER_SIZE)
+      response_originServer = b""
+      while True:
+          chunk = originServerSocket.recv(BUFFER_SIZE)
+          if not chunk:
+              break
+          response_originServer += chunk
       # ~~~~ END CODE INSERT ~~~~
 
       # 11.Send the response to the client
