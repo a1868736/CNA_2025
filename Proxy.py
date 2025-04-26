@@ -226,3 +226,4 @@ while True:
     clientSocket.close()
   except:
     print ('Failed to close client socket')
+    #test
